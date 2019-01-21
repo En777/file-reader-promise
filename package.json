@@ -6,6 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "MIT"
+  "author": "@En777",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/En777/file-reader-promise.git"
+  },
+  "keywords": [
+    "FileReader",
+    "Promise",
+    "promisify",
+    "then",
+    "readAsArrayBuffer",
+    "readAsBinaryString",
+    "readAsDataURL",
+    "readAsText"
+  ],
+  "bugs": {
+    "url": "https://github.com/En777/file-reader-promise/issues"
+  },
+  "homepage": "https://github.com/En777/file-reader-promise"
 }
