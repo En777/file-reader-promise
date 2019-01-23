@@ -19,10 +19,10 @@ npm install --save file-reader-promise
 
 ### Basic syntax
 ```javascript
-import FileReaderPromise from 'file-reader-promise';
+const FileReaderPromise = require('file-reader-promise');
 
-FileReaderPromise.readAsText(fileData)
-  .then(newImage)
+FileReaderPromise.readAsText(file)
+  .then(text)
   .catch(err => console.error(err));
 ```
 
@@ -33,11 +33,12 @@ FileReaderPromise.readAsBinaryString()
 FileReaderPromise.readAsDataURL()
 FileReaderPromise.readAsText()
 
-// you can got a simple value(event.target.result) at Promsie chain in default config.
+// you can get a simple value(event.target.result) at Promsie chain in default config.
+FileReaderPromise.readAsText(file).then(textValue)
 // but, if you want a original value, you can set a new config for FileReaderPromise:
 const config = { enableSimplify: false }
 FileReaderPromise.set(config)
-FileReaderPromise.readAsArrayBuffer()
+FileReaderPromise.readAsArrayBuffer(file)
 .then(function (event) {
   // event is original event of instanceOfFileReader.onload = function (event) {}
   console.log(event.target.result)
@@ -47,16 +48,16 @@ FileReaderPromise.readAsArrayBuffer()
 
 ### Example: file input
 ```javascript
-import FileReaderPromise from 'file-reader-promise';
+const FileReaderPromise = require('file-reader-promise');
 
-function newImage(imageDataUrl) {
-  ...
+function handleImage(imageDataUrl) {
+  // ...
 }
-function newTextFile(text) {
-  ...
+function handleText(text) {
+  // ...
 }
-function loadedArrayBuffer(arrayBuffer) {
-  ...
+function handleArrayBuffer(arrayBuffer) {
+  // ...
 }
 
 // e.g. <input id="file-input" type="file" />
@@ -68,16 +69,16 @@ function handleFiles(event) {
   if(file) {
     if (/^image/.test(file.type)) {
       FileReaderPromise.readAsDataURL(file)
-      .then(newImage)
+      .then(handleImage)
       .catch(err => console.error(err));
     } else {
       FileReaderPromise.readAsText(file)
-      .then(newTextFile)
+      .then(handleText)
       .catch(err => console.error(err));
     }
     // or
     FileReaderPromise.readAsArrayBuffer(file)
-      .then(loadedArrayBuffer)
+      .then(handleArrayBuffer)
       .catch(err => console.error(err));
   }
 }
