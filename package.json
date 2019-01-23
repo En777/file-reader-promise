@@ -1,6 +1,6 @@
 {
   "name": "file-reader-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "FileReader Promise API library.",
   "main": "index.js",
   "scripts": {
