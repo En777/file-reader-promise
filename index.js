@@ -52,4 +52,7 @@ if (typeof FileReader === 'function') {
   addMethods()
 }
 
-export default FileReaderPromise
+// ES2015 export (it has problems with babel and webpack)
+// export default FileReaderPromise
+// commonjs export
+module.exports = FileReaderPromise
